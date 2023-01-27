@@ -9,7 +9,7 @@ test-output/
 .settings/
 deploy_web_war.bat
 localbuild/
-/.idea/
+.idea/
 *.iml
 log/
 logs/
