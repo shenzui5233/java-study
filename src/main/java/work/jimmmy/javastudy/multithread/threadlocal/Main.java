@@ -13,7 +13,8 @@ public class Main {
         // sample2(); // 30个线程，计算日期
         // sample3(); // 1000个打印日期任务，线程池实现, 每个线程使用自己的SimpleDateFormat对象
         // sample4(); // 所有线程共用SimpleDateFormat, 该实现会因为sdf的线程安全问题而出现重复日期
-        sample5(); // 所有线程共用SimpleDateFormat, 该实现会因为sdf的线程安全问题而出现重复日期，通过加锁解决
+        // sample5(); // 所有线程共用SimpleDateFormat, 该实现会因为sdf的线程安全问题而出现重复日期，通过加锁解决
+        sample6();
     }
 
     /**
@@ -75,6 +76,29 @@ public class Main {
     }
 
     /**
+     * 利用threadlocal给每个线程分配自己的sdf对象，保证了线程安全，高效利用内存
+     */
+    public static void sample6() {
+        ExecutorService es = Executors.newFixedThreadPool(10);
+        for (int i = 0; i < 1000; i++) {
+            int finalI = i;
+            es.execute(() -> System.out.println(dateWithThreadLocal(finalI)));
+        }
+    }
+
+    /**
+     * 使用threadlocal
+     *
+     * @param seconds seconds
+     * @return 格式化后的日期
+     */
+    public static String dateWithThreadLocal(int seconds) {
+        Date date = new Date(1000L * seconds);
+        SimpleDateFormat dateFormat = ThreadSafeFormatter.dateFormatThreadLocal.get();
+        return dateFormat.format(date);
+    }
+
+    /**
      * 计算距离1970年1月1日 00:00:00 seconds秒后的日期
      *
      * @param seconds seconds
@@ -101,4 +125,10 @@ public class Main {
         }
         return dateStr;
     }
+}
+
+class ThreadSafeFormatter {
+    public static ThreadLocal<SimpleDateFormat> dateFormatThreadLocal = ThreadLocal.withInitial(
+            () -> new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
+
 }
