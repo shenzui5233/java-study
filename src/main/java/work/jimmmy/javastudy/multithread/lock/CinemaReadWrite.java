@@ -1,11 +1,12 @@
+
 package work.jimmmy.javastudy.multithread.lock;
 
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * 读写锁示例
- *      读锁可以被多个线程获取，写锁只能被一个线程获取，释放锁后才能被另一个线程获取
- *      插队策略：读锁不允许插队场景；允许读锁插队场景
+ * 读锁可以被多个线程获取，写锁只能被一个线程获取，释放锁后才能被另一个线程获取
+ * 插队策略：读锁不允许插队场景；允许读锁插队场景
  */
 public class CinemaReadWrite {
     private static final ReentrantReadWriteLock READ_WRITE_LOCK = new ReentrantReadWriteLock();
@@ -43,15 +44,14 @@ public class CinemaReadWrite {
     }
 
     public static void main(String[] args) throws InterruptedException {
-//        System.out.println("读写锁demo1: 展示写锁互斥，读锁可以共享的例子");
-//        readWriteDemo();
+        // System.out.println("读写锁demo1: 展示写锁互斥，读锁可以共享的例子");
+        // readWriteDemo();
         System.out.println("读写锁demo2: 展示读锁不能插队场景，即线程队列头节点是获取写锁的场景时，新来的获取读锁线程不允许插队");
         readWriteQueueDemo();
     }
 
     /**
      * 读写锁demo
-     *
      * 展示读锁共享,写锁互斥的例子
      */
     public static void readWriteDemo() {
@@ -63,7 +63,6 @@ public class CinemaReadWrite {
 
     /**
      * 插队策略：队列头节点为获取写锁的线程时，不允许获取读锁的线程插队
-     *
      * 起一个线程不断创建获取读锁的线程，
      * 模拟场景1：队列头节点是读线程，此时有新线程来获取读锁，允许读锁插队
      * 模拟场景2：队列头节点是写线程，此时有新线程来获取读锁，不允许读锁插队

@@ -1,3 +1,4 @@
+
 package work.jimmmy.javastudy.multithread.threadlocal;
 
 import java.text.SimpleDateFormat;
@@ -40,7 +41,7 @@ public class Main {
      * 1000个打印日期任务，线程池实现
      * 每个线程使用自己的SimpleDateFormat对象
      */
-    public static void sample3() throws InterruptedException {
+    public static void sample3() {
         ExecutorService es = Executors.newFixedThreadPool(10);
         for (int i = 0; i < 1000; i++) {
             int finalI = i;
@@ -128,7 +129,7 @@ public class Main {
 }
 
 class ThreadSafeFormatter {
-    public static ThreadLocal<SimpleDateFormat> dateFormatThreadLocal = ThreadLocal.withInitial(
-            () -> new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
+    public static ThreadLocal<SimpleDateFormat> dateFormatThreadLocal =
+        ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));
 
 }

@@ -1,10 +1,10 @@
+
 package work.jimmmy.javastudy.multithread.atomic;
 
 import java.util.concurrent.atomic.AtomicIntegerArray;
 
 /**
  * 原子数组使用示例
- *
  * 启动100个线程，每个线程将原子数组的所有元素的值加1
  * 启动100个线程，每个线程将原子数组的所有元素的值减1
  * 查看最后结果：预期，原子数组的每个元素值为0

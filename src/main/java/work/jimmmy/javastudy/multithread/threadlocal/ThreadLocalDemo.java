@@ -1,3 +1,4 @@
+
 package work.jimmmy.javastudy.multithread.threadlocal;
 
 public class ThreadLocalDemo {
@@ -25,7 +26,8 @@ class Service2 {
 
 class Service3 {
     public void process() {
-        System.out.println("Service3: " + (UserContextHolder.holder.get() == null ? null : UserContextHolder.holder.get().name));
+        System.out.println(
+            "Service3: " + (UserContextHolder.holder.get() == null ? null : UserContextHolder.holder.get().name));
     }
 }
 

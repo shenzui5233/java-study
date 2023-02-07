@@ -1,3 +1,4 @@
+
 package work.jimmmy.javastudy.multithread.atomic;
 
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
@@ -10,8 +11,8 @@ public class AtomicIntegerFieldUpdaterDemo implements Runnable {
 
     static Candidate peter;
 
-    public static final AtomicIntegerFieldUpdater<Candidate> SCORE_UPDATER
-            = AtomicIntegerFieldUpdater.newUpdater(Candidate.class, "score");
+    public static final AtomicIntegerFieldUpdater<Candidate> SCORE_UPDATER =
+        AtomicIntegerFieldUpdater.newUpdater(Candidate.class, "score");
 
     @Override
     public void run() {

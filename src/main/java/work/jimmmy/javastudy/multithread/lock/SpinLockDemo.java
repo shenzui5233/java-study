@@ -1,3 +1,4 @@
+
 package work.jimmmy.javastudy.multithread.lock;
 
 import java.util.concurrent.atomic.AtomicReference;
@@ -9,12 +10,12 @@ public class SpinLockDemo {
     /**
      * 原子引用
      */
-    private final AtomicReference<Thread> sign = new AtomicReference<> ();
+    private final AtomicReference<Thread> sign = new AtomicReference<>();
 
     public void lock() {
         Thread current = Thread.currentThread();
-        while(!sign.compareAndSet(null, current)) {
-            //System.out.println(Thread.currentThread().getName() + "自旋获取失败，再次尝试");
+        while (!sign.compareAndSet(null, current)) {
+            // System.out.println(Thread.currentThread().getName() + "自旋获取失败，再次尝试");
         }
     }
 

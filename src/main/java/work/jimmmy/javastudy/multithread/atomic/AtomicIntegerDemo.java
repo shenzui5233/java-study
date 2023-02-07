@@ -1,10 +1,10 @@
+
 package work.jimmmy.javastudy.multithread.atomic;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 描述：演示AtomicInteger的基本用法，对比非原子类的线程安全问题，使用了原子类之后，不需要加锁，也可以保证线程安全
- *
  * 如仅需对某些数值保证线程安全，使用原子类非常合适
  */
 public class AtomicIntegerDemo implements Runnable {
@@ -19,9 +19,9 @@ public class AtomicIntegerDemo implements Runnable {
      */
     private static volatile int basicCount = 0;
 
-//    public synchronized void incrementBasic() {
-//        basicCount++;
-//    }
+    // public synchronized void incrementBasic() {
+    // basicCount++;
+    // }
 
     public void incrementBasic() {
         basicCount++;
