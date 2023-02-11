@@ -19,3 +19,5 @@ opbin/
 dump/
 downstream.env
 .build/
+/java-study.eml
+/java-study.userlibraries
