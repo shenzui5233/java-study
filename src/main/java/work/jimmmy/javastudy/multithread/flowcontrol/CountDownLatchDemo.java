@@ -63,5 +63,6 @@ public class CountDownLatchDemo {
         System.out.println("裁判员：准备！");
         countDownLatch.countDown();
         System.out.println("裁判员：跑");
+        es.shutdown();
     }
 }
