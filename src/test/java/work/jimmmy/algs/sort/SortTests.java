@@ -24,6 +24,16 @@ public class SortTests {
         sortTest(InsertionSortDemo.class, 100000);
     }
 
+    @Test
+    public void test_selectionSort() {
+        sortTest(SelectionSortDemo.class, 100000);
+    }
+
+    @Test
+    public void test_bubbleSort() {
+        sortTest(BubbleSortDemo.class, 100000);
+    }
+
     public void sortTest(Class cls, int n) {
         try {
             ImmutableSorter is = (ImmutableSorter) cls.newInstance();
