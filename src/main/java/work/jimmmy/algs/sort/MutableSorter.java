@@ -10,7 +10,7 @@ package work.jimmmy.algs.sort;
  * @author shenzui5233
  * @since 2023-02-21
  */
-public interface ImmutableSorter {
+public interface MutableSorter {
     void sort(int[] nums);
 
     default void swap(int[] nums, int i, int j) {

@@ -11,7 +11,7 @@ package work.jimmmy.algs.sort;
  * @author shenzui5233
  * @since 2023-02-21
  */
-public class BubbleSortDemo implements ImmutableSorter {
+public class BubbleSortDemo implements MutableSorter {
     @Override
     public void sort(int[] nums) {
         for (int i = nums.length - 1; i >= 0; i--) {

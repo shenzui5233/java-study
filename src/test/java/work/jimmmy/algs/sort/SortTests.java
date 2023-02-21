@@ -34,9 +34,14 @@ public class SortTests {
         sortTest(BubbleSortDemo.class, 100000);
     }
 
+    @Test
+    public void test_mergeSort() {
+        sortTest(MergeSortDemo.class, 100000);
+    }
+
     public void sortTest(Class cls, int n) {
         try {
-            ImmutableSorter is = (ImmutableSorter) cls.newInstance();
+            MutableSorter is = (MutableSorter) cls.newInstance();
             int[] nums = gen(n).stream().mapToInt(x -> x).toArray();
             long start = System.currentTimeMillis();
             is.sort(nums);

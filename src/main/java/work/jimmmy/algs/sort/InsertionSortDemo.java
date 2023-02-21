@@ -14,7 +14,7 @@ package work.jimmmy.algs.sort;
  * @author shenzui5233
  * @since 2023-02-21
  */
-public class InsertionSortDemo implements ImmutableSorter {
+public class InsertionSortDemo implements MutableSorter {
     public void sort(int[] nums) {
         for (int i = 1; i < nums.length; i++) { // i下一个需要排序的元素
             int num = nums[i];
