@@ -39,14 +39,31 @@ public class SortTests {
         sortTest(MergeSortDemo.class, 100000);
     }
 
+    @Test
+    public void test_quickSort1() {
+        sortTest(QuickSortDemo.QuickSort1.class, 100000);
+    }
+
+    @Test
+    public void test_quickSort2() {
+        sortTest(QuickSortDemo.QuickSort2.class, 100000);
+    }
+
     public void sortTest(Class cls, int n) {
         try {
-            MutableSorter is = (MutableSorter) cls.newInstance();
-            int[] nums = gen(n).stream().mapToInt(x -> x).toArray();
+            Object obj = cls.newInstance();
             long start = System.currentTimeMillis();
-            is.sort(nums);
-            System.out.println("time usage " + (System.currentTimeMillis() - start));
-            assertSorted(nums);
+            if (obj instanceof ImmutableSorter) {
+                List<Integer> nums = gen(n);
+                nums = ((ImmutableSorter) obj).sort(nums);
+                System.out.println("time usage " + (System.currentTimeMillis() - start));
+                assertSorted(nums);
+            } else if (obj instanceof MutableSorter) {
+                int[] nums = gen(n).stream().mapToInt(x -> x).toArray();
+                ((MutableSorter) obj).sort(nums);
+                System.out.println("time usage " + (System.currentTimeMillis() - start));
+                assertSorted(nums);
+            }
         } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
