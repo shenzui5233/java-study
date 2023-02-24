@@ -49,6 +49,11 @@ public class SortTests {
         sortTest(QuickSortDemo.QuickSort2.class, 100000);
     }
 
+    @Test
+    public void test_heapSort() {
+        sortTest(HeapSortDemo.class, 10);
+    }
+
     public void sortTest(Class cls, int n) {
         try {
             Object obj = cls.newInstance();
@@ -60,6 +65,7 @@ public class SortTests {
                 assertSorted(nums);
             } else if (obj instanceof MutableSorter) {
                 int[] nums = gen(n).stream().mapToInt(x -> x).toArray();
+                System.out.println("test array: " + Arrays.toString(nums));
                 ((MutableSorter) obj).sort(nums);
                 System.out.println("time usage " + (System.currentTimeMillis() - start));
                 assertSorted(nums);
