@@ -63,4 +63,31 @@ public class ListTest {
 
         list.remove(node1);
     }
+
+    @Test
+    public void test_reverse() {
+        List<Integer> list = new List<>();
+        list.insert(1);
+        list.insert(2);
+        list.insert(3);
+        list.reverse();
+        List.Node<Integer> p = list.head;
+        for (Integer i = 1; p != null; i++) {
+            Assert.assertEquals(i, p.data);
+            p = p.next;
+        }
+    }
+
+    @Test
+    public void test_loop() {
+        List<Integer> list = new List<>();
+        list.insert(3);
+        list.insert(2);
+        list.insert(1);
+        list.insert(0);
+        List.Node<Integer> node = list.find(x -> x == 3);
+        node.next = list.head;
+
+        Assert.assertTrue(list.hasLoop());
+    }
 }

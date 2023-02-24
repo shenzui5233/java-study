@@ -76,6 +76,36 @@ public class List<T> {
         return c;
     }
 
+    public void reverse() {
+        // prev current next
+        Node<T> prev = null;
+        Node<T> current = head;
+        Node<T> next = null;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
+    }
+
+    public boolean hasLoop() {
+        if (head == null || head.next == null) {
+            return false;
+        }
+        Node<T> slow = head;
+        Node<T> fast = head.next.next;
+        while (fast != null && slow !=null) {
+            if (fast == slow) {
+                return true;
+            }
+            fast = fast.next != null ? fast.next.next : null;
+            slow = slow.next;
+        }
+        return true;
+    }
+
     static class Node<T> {
         Node<T> next;
 
