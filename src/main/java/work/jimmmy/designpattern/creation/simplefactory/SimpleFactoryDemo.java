@@ -2,7 +2,7 @@
  * Copyright (c) shenzui5233 2023-2023. All right reserved.
  */
 
-package work.jimmmy.designpattern.creation;
+package work.jimmmy.designpattern.creation.simplefactory;
 
 /**
  * 简单工厂模式
@@ -16,22 +16,10 @@ public class SimpleFactoryDemo {
         Video javaVideo = new JavaVideo();
         javaVideo.produce();
 
-        VideoFactory videoFactory = new VideoFactory();
+        SimpleVideoFactory videoFactory = new SimpleVideoFactory();
         Video video = videoFactory.getVideo("java");
         if (video != null) {
             video.produce();
-        }
-    }
-}
-
-class VideoFactory {
-    public Video getVideo(String type) {
-        if ("java".equalsIgnoreCase(type)) {
-            return new JavaVideo();
-        } else if ("python".equalsIgnoreCase(type)) {
-            return new PythonVideo();
-        } else {
-            return null;
         }
     }
 }
@@ -53,5 +41,17 @@ class PythonVideo extends Video {
     @Override
     public void produce() {
         System.out.println("录制python课程视频");
+    }
+}
+
+class SimpleVideoFactory {
+    public Video getVideo(String type) {
+        if ("java".equalsIgnoreCase(type)) {
+            return new JavaVideo();
+        } else if ("python".equalsIgnoreCase(type)) {
+            return new PythonVideo();
+        } else {
+            return null;
+        }
     }
 }
