@@ -2,7 +2,7 @@
  * Copyright (c) shenzui5233 2023-2023. All right reserved.
  */
 
-package work.jimmmy.algs.linkedlist;
+package work.jimmmy.algs.tree;
 
 import java.util.ArrayList;
 import java.util.Collections;
